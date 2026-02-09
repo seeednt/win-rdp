@@ -19,6 +19,12 @@ jobs:
       run: |
         choco install tailscale -y
 
-    - name: Connect to Tailscale
-      run: |
-        tailscale up --authkey=${{ secrets.TAILSCALE_AUTHKEY }} --hostname=github-rdp
+        - name: Connect to Tailscale
+          shell: powershell
+          run: |
+            & "C:\Program Files\Tailscale\tailscale.exe" up --authkey=${{ secrets.TAILSCALE_AUTHKEY }} --hostname=github-rdp
+            
+               - name: Check Tailscale status
+                 shell: powershell
+                 run: |
+                  & "C:\Program Files\Tailscale\tailscale.exe" status
