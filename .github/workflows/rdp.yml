@@ -30,3 +30,9 @@ jobs:
         shell: powershell
         run: |
           & "C:\Program Files\Tailscale\tailscale.exe" status
+
+      - name: Keep session alive
+        shell: powershell
+        run: |
+          Write-Host "RDP is ready. Keeping session alive..."
+          Start-Sleep -Seconds 21600
